@@ -1,0 +1,10 @@
+---
+- name: Disable Docker and it's socket
+  service:
+    name: '{{item}}'
+    state: stopped
+    enabled: false
+  become: true
+  with_items:
+    - docker.socket
+    - docker.service

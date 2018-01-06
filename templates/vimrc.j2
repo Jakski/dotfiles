@@ -1,0 +1,39 @@
+" Vundle specific
+set nocompatible              " be iMproved, required
+filetype off                  " required
+
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'tpope/vim-fugitive'
+Plugin 'genutils'
+Plugin 'The-NERD-Commenter'
+Plugin 'The-NERD-tree'
+Plugin 'vimwiki'
+Plugin 'Jakski/vim-jakskitags'
+call vundle#end()
+filetype plugin indent on
+
+" Formatting and colors
+syntax on
+set number
+set noswapfile
+set tabstop=4 shiftwidth=0
+set expandtab
+set relativenumber
+set autoindent
+set nofoldenable
+set laststatus=0
+set statusline+=%{fugitive#statusline()}%=line:%l/%L\ col:%c
+set background=dark
+
+" Filetypes
+autocmd BufNewFile,BufRead *.dockerfile :set filetype=dockerfile
+autocmd BufNewFile,BufRead *.html.j2 :set filetype=htmldjango
+autocmd BufNewFile,BufRead *.conf.j2 :set filetype=conf
+
+" Mappings
+inoremap <F5> <C-R>=strftime("%Y.%m.%d %H:%M")<CR>
+nnoremap <Leader>n :NERDTreeToggle<CR>
+
+let g:vimwiki_list = [{'path': '~/vimwiki/default'}]

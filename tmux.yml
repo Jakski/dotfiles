@@ -1,0 +1,37 @@
+---
+- name: Install tmux configuration file
+  template:
+    src: tmux.conf.j2
+    dest: '{{ansible_user_dir}}/.tmux.conf'
+    owner: '{{ansible_user_uid}}'
+    group: '{{ansible_user_gid}}'
+    mode: 0644
+- name: Create catalog for tmux files
+  file:
+    path: '{{ansible_user_dir}}/.tmux'
+    state: directory
+    owner: '{{ansible_user_uid}}'
+    group: '{{ansible_user_gid}}'
+    mode: 0755
+- name: Insert tmux files
+  copy:
+    src: '{{item}}'
+    dest: '{{ansible_user_dir}}/.tmux/'
+    owner: '{{ansible_user_uid}}'
+    group: '{{ansible_user_gid}}'
+  with_fileglob:
+    - files/tmux/*
+- name: Setup tmux scripts permissions
+  file:
+    path: '{{ansible_user_dir}}/.tmux/{{item.split("/")[-1]}}'
+    mode: 0755
+    state: file
+  with_fileglob:
+    - files/tmux/*.sh
+- name: Link tmux scripts to user's PATH
+  file:
+    src: '{{ansible_user_dir}}/.tmux/{{item.split("/")[-1]}}'
+    path: '{{ansible_user_dir}}/bin/mux-{{item.split("/")[-1].split(".")[0]}}'
+    state: link
+  with_fileglob:
+    - files/tmux/*.sh

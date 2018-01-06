@@ -1,0 +1,23 @@
+---
+- name: Add APT repository keys
+  apt_key:
+    id: '{{item.pubkey}}'
+    keyserver: keyserver.ubuntu.com
+    state: present
+  become: true
+  with_items: '{{repositories}}'
+- name: Add APT repositories
+  apt_repository:
+    filename: '{{item.0.name}}'
+    repo: '{{item.1}}'
+  become: true
+  with_subelements:
+    - '{{repositories}}'
+    - repository
+- name: Install system packages
+  apt:
+    name: '{{item}}'
+    state: present
+    update_cache: true
+  become: true
+  with_items: '{{packages}}'

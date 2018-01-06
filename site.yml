@@ -1,0 +1,15 @@
+---
+- hosts: localhost
+  vars_files:
+    - vars.yml
+  tasks:
+    - name: Create directory for user executable files
+      file:
+        dest: '{{ansible_user_dir}}/bin'
+        state: directory
+        owner: '{{ansible_user_uid}}'
+        group: '{{ansible_user_gid}}'
+    - import_tasks: packages.yml
+    - import_tasks: tmux.yml
+    - import_tasks: vim.yml
+    - import_tasks: services.yml
