@@ -17,7 +17,7 @@ packages:
   - vim
   - dirmngr
   - apt-transport-https
-  - exuberant-ctags
+  - vinagre
   # media
   - gimp
   - vlc
@@ -25,6 +25,7 @@ packages:
   - mupdf
   - irssi
   # development
+  - exuberant-ctags
   - git
   - make
   - python3-venv
