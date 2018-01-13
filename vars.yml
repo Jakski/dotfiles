@@ -17,6 +17,7 @@ packages:
   - vim
   - dirmngr
   - apt-transport-https
+  - exuberant-ctags
   # media
   - gimp
   - vlc
@@ -42,6 +43,6 @@ repositories:
     pubkey: '6125E2A8C77F2818FB7BD15B93C4A3FD7BB9C367'
   - name: nodesource
     repository:
-      - deb https://deb.nodesource.com/node_6.x stretch main
-      - deb-src https://deb.nodesource.com/node_6.x stretch main
+      - deb https://deb.nodesource.com/node_8.x stretch main
+      - deb-src https://deb.nodesource.com/node_8.x stretch main
     pubkey: '9FD3B784BC1C6FC31A8A0A1C1655A0AB68576280'
