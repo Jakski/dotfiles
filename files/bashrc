@@ -1,0 +1,19 @@
+shi() {
+    # Use rxvt for systems without tmux terminfo
+    old_term=$TERM
+    TERM=rxvt
+    ssh $@
+    TERM=$old_term
+}
+
+venv-activate() {
+    . ~/.venvs/${1}/bin/activate
+}
+
+alias \
+    sshk="ssh-add ~/.ssh/id_rsa" \
+    l="less" \
+    s="ssh"
+
+export \
+    EDITOR=vim

@@ -18,8 +18,6 @@ filetype plugin indent on
 syntax on
 set number
 set noswapfile
-set tabstop=4 shiftwidth=0
-set expandtab
 set relativenumber
 set autoindent
 set nofoldenable
@@ -33,7 +31,7 @@ autocmd BufNewFile,BufRead *.html.j2 :set filetype=htmldjango
 autocmd BufNewFile,BufRead *.conf.j2 :set filetype=conf
 
 " Mappings
-inoremap <F5> <C-R>=strftime("%Y.%m.%d %H:%M")<CR>
+inoremap <F5> <C-R>=strftime("%Y-%m-%d %H:%M")<CR>
 nnoremap <Leader>n :NERDTreeToggle<CR>
 
 let g:vimwiki_list = [{'path': '~/vimwiki/default'}]

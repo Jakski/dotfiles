@@ -1,0 +1,6 @@
+---
+- name: Install Bash configuration
+  blockinfile:
+    path: '{{ansible_user_dir}}/.bashrc'
+    insertafter: 'EOF'
+    block: '{{lookup("file", "bashrc")}}'
