@@ -19,7 +19,3 @@ installations.
 ``$> ansible-playbook -K site.yml``
 
 *sudo* password is required for some parts of playbook.
-
-## Notes
-
-- vim requires to run `:PluginInstall` afterwards to setup Vundle extensions
