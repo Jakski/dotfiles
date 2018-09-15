@@ -1,37 +1,32 @@
-" Vundle specific
-set nocompatible              " be iMproved, required
-filetype off                  " required
+call plug#begin('~/.vim/plugged')
+Plug 'tpope/vim-fugitive'
+Plug 'vim-scripts/genutils'
+Plug 'vim-scripts/The-NERD-Commenter'
+Plug 'vim-scripts/The-NERD-tree'
+Plug 'vim-scripts/vimwiki'
+Plug 'Jakski/vim-jakskitags'
+call plug#end()
 
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-Plugin 'VundleVim/Vundle.vim'
-Plugin 'tpope/vim-fugitive'
-Plugin 'genutils'
-Plugin 'The-NERD-Commenter'
-Plugin 'The-NERD-tree'
-Plugin 'vimwiki'
-Plugin 'Jakski/vim-jakskitags'
-call vundle#end()
-filetype plugin indent on
-
-" Formatting and colors
 syntax on
 set number
 set noswapfile
 set relativenumber
 set autoindent
 set nofoldenable
+set mouse=
+set ruler
+set nomodeline
 set laststatus=0
 set statusline+=%{fugitive#statusline()}%=line:%l/%L\ col:%c
 set background=dark
 
-" Filetypes
 autocmd BufNewFile,BufRead *.dockerfile :set filetype=dockerfile
 autocmd BufNewFile,BufRead *.html.j2 :set filetype=htmldjango
 autocmd BufNewFile,BufRead *.conf.j2 :set filetype=conf
 
-" Mappings
 inoremap <F5> <C-R>=strftime("%Y-%m-%d %H:%M")<CR>
 nnoremap <Leader>n :NERDTreeToggle<CR>
 
+let g:NERDTreeChDirMode = 2
+let g:NERDTreeShowHidden = 1
 let g:vimwiki_list = [{'path': '~/vimwiki/default'}]

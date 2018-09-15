@@ -2,33 +2,36 @@
 - name: Setup vim configuration
   template:
     src: vimrc.j2
-    dest: '{{ansible_user_dir}}/.vimrc'
-    owner: '{{ansible_user_uid}}'
-    group: '{{ansible_user_gid}}'
+    dest: '{{ ansible_user_dir }}/.vimrc'
+    owner: '{{ ansible_user_uid }}'
+    group: '{{ ansible_user_gid }}'
     mode: 0644
 - name: Create vim catalogs
   file:
-    path: '{{item}}'
-    owner: '{{ansible_user_uid}}'
-    group: '{{ansible_user_gid}}'
+    path: '{{ item }}'
+    owner: '{{ ansible_user_uid }}'
+    group: '{{ ansible_user_gid }}'
     mode: 0755
     state: directory
-  with_items:
-    - '{{ansible_user_dir}}/.vim'
-    - '{{ansible_user_dir}}/.vim/ftplugin'
-    - '{{ansible_user_dir}}/.vim/bundle'
-- name: Install Vundle
-  git:
-    dest: '{{ansible_user_dir}}/.vim/bundle/Vundle.vim'
-    repo: https://github.com/VundleVim/Vundle.vim.git
-    version: v0.10.2
-    depth: 1
+  loop:
+    - '{{ ansible_user_dir }}/.vim'
+    - '{{ ansible_user_dir }}/.vim/ftplugin'
+    - '{{ ansible_user_dir }}/.vim/plugged'
+    - '{{ ansible_user_dir }}/.vim/autoload'
+- name: Install vim-plug
+  get_url:
+    url: '{{ vim_plug_url }}'
+    dest: '{{ ansible_user_dir }}/.vim/autoload/plug.vim'
+    sha256sum: '{{ vim_plug_sha256_checksum }}'
 - name: Setup ftplugin customisations
   copy:
-    src: '{{item}}'
-    dest: '{{ansible_user_dir}}/.vim/ftplugin/'
-    owner: '{{ansible_user_uid}}'
-    group: '{{ansible_user_gid}}'
+    src: '{{ item }}'
+    dest: '{{ ansible_user_dir }}/.vim/ftplugin/'
+    owner: '{{ ansible_user_uid }}'
+    group: '{{ ansible_user_gid }}'
     mode: 0644
-  with_fileglob:
-    - files/ftplugin/*
+  loop: '{{ query("fileglob", "files/ftplugin/*") }}'
+- name: Install plugins
+  shell: vim -c 'PlugInstall --sync' -c 'qa'
+  args:
+    creates: '{{ ansible_user_dir }}/.vim/plugged/vim-jakskitags'

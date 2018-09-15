@@ -6,6 +6,10 @@ shi() {
     TERM=$old_term
 }
 
+tmosh() {
+	mosh $@ -- tmux
+}
+
 venv-activate() {
     . ~/.venvs/${1}/bin/activate
 }
@@ -15,5 +19,5 @@ alias \
     l="less" \
     s="ssh"
 
-export \
-    EDITOR=vim
+export EDITOR=vim
+export PATH={{ paths | join(":") }}
