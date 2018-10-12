@@ -5,16 +5,16 @@
     keyserver: keyserver.ubuntu.com
     state: present
   become: true
-  loop: '{{ repositories }}'
+  loop: '{{ dotfiles_repositories }}'
 - name: Add APT repositories
   apt_repository:
-    filename: '{{item.0.name}}'
-    repo: '{{item.1}}'
+    filename: '{{ item.0.name }}'
+    repo: '{{ item.1 }}'
   become: true
-  loop: '{{ repositories|subelements("repository") }}'
+  loop: '{{ dotfiles_repositories|subelements("repository") }}'
 - name: Install system packages
   apt:
-    name: '{{ packages }}'
+    name: '{{ dotfiles_packages }}'
     state: present
     update_cache: true
   become: true

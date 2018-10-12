@@ -23,7 +23,7 @@
   loop: '{{ query("fileglob", "files/tmux/*.sh") }}'
 - name: Link tmux scripts to user's PATH
   file:
-    src: '{{ ansible_user_dir }}/.tmux/{{item.split("/")[-1]}}'
-    path: '{{ ansible_user_dir }}/bin/mux-{{item.split("/")[-1].split(".")[0]}}'
+    src: '{{ ansible_user_dir }}/.tmux/{{ item.split("/")[-1] }}'
+    path: '{{ ansible_user_dir }}/bin/mux-{{ item.split("/")[-1].split(".")[0] }}'
     state: link
   loop: '{{ query("fileglob", "files/tmux/*.sh") }}'

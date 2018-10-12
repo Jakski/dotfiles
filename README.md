@@ -1,21 +1,20 @@
-# Ansible playbook for dotfiles
+# dotfiles
 
-Playbook to prepare new workstations.
+Ansible role for provisioning new workstations.
 
-## Requirements
+## Compiling and using documentation
 
-Ensure that target system has packages:
-
-- *apt-transport-https*
-- *dirmngr*
-- *ansible* (http://docs.ansible.com/ansible/latest/intro_installation.html#latest-releases-via-apt-debian)
-- *git*
-
-This playbook has been tested only with official Debian 9 *Stretch*
-installations.
+```
+$> pip3 install -r requirements.txt
+$> make man
+$> man ./docs/man/dotfiles.1
+```
 
 ## Usage
 
-``$> ansible-playbook -K site.yml``
+You can apply this role with default values directly on your system by running:
 
-*sudo* password is required for some parts of playbook.
+```
+$> cd tests
+$> ansible-playbook -K site.yml
+```

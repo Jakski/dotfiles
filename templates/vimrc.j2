@@ -19,6 +19,8 @@ set nomodeline
 set laststatus=0
 set statusline+=%{fugitive#statusline()}%=line:%l/%L\ col:%c
 set background=dark
+set list
+set listchars=tab:\¦\ 
 
 autocmd BufNewFile,BufRead *.dockerfile :set filetype=dockerfile
 autocmd BufNewFile,BufRead *.html.j2 :set filetype=htmldjango
@@ -30,3 +32,4 @@ nnoremap <Leader>n :NERDTreeToggle<CR>
 let g:NERDTreeChDirMode = 2
 let g:NERDTreeShowHidden = 1
 let g:vimwiki_list = [{'path': '~/vimwiki/default'}]
+let g:indentLine_char = '¦'

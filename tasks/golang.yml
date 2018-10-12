@@ -1,0 +1,21 @@
+---
+- name: Check, if Go installation catalog exists
+  stat:
+    path: /usr/local/go
+  register: go_dir
+- name: Install Go
+  block:
+    - name: Download Go
+      get_url:
+        url: '{{ dotfiles_golang_url }}'
+        dest: /tmp/go.tar.gz
+        sha256sum: '{{ dotfiles_golang_sha256_checksum }}'
+    - name: Unpack Go
+      unarchive:
+        src: /tmp/go.tar.gz
+        dest: /usr/local
+    - name: Remove Go archive
+      file:
+        state: absent
+        path: /tmp/go.tar.gz
+  when: not go_dir.stat.exists

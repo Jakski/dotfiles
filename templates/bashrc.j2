@@ -14,10 +14,9 @@ venv-activate() {
     . ~/.venvs/${1}/bin/activate
 }
 
-alias \
-    sshk="ssh-add ~/.ssh/id_rsa" \
-    l="less" \
-    s="ssh"
+{% if dotfiles_aliases %}
+alias{% for alias, cmd in dotfiles_aliases.items() %} {{ alias }}="{{ cmd }}"{% endfor %}
 
+{% endif %}
 export EDITOR=vim
-export PATH={{ paths | join(":") }}
+export PATH={{ dotfiles_paths | join(":") }}

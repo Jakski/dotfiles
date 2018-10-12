@@ -1,0 +1,144 @@
+---
+### dotfiles_packages
+#   APT packages to install.
+#
+#   Default:
+#
+#   .. lookup-yaml:: defaults/main.yml
+#
+#      dotfiles_packages
+dotfiles_packages:
+  # utilities
+  - tmux
+  - ncurses-term
+  - xclip
+  - python3
+  - python3-pip
+  - dnsutils
+  - curl
+  - bzip2
+  - ca-certificates
+  - lsb-release
+  - cpipe
+  - lynx
+  - zip
+  - neovim
+  - dirmngr
+  - apt-transport-https
+  - vinagre
+  # media
+  - gimp
+  - vlc
+  - pavucontrol
+  - mupdf
+  - irssi
+  # development
+  - lsyncd
+  - exuberant-ctags
+  - git
+  - make
+  - python3-venv
+  - strace
+  - nmap
+  - docker-engine
+  # headers for Pyenv
+  - libssl-dev
+  - libsqlite3-dev
+  - libbz2-dev
+
+### dotfiles_paths
+#   Elements of PATH environment variable.
+#
+#   Default:
+#
+#   .. lookup-yaml:: defaults/main.yml
+#
+#      dotfiles_paths
+dotfiles_paths:
+  - ~/bin
+  - ~/.local/bin
+  - ~/go/bin
+  - /usr/local/go/bin
+  - /usr/bin
+  - /bin
+  - /usr/local/games
+  - /usr/games
+
+### dotfiles_golang_url
+#   URL of Go archive.
+#
+#   Default:
+#
+#   .. lookup-yaml:: defaults/main.yml
+#
+#      dotfiles_golang_url
+dotfiles_golang_url: https://dl.google.com/go/go1.11.linux-amd64.tar.gz
+
+### dotfiles_golang_sha256_checksum
+#   SHA256 checksum of Go archive.
+#
+#   Default:
+#
+#   .. lookup-yaml:: defaults/main.yml
+#
+#      dotfiles_golang_sha256_checksum
+dotfiles_golang_sha256_checksum: b3fcf280ff86558e0559e185b601c9eade0fd24c900b4c63cd14d1d38613e499
+
+### dotfiles_vim_plug_url
+#   URL for Vim Plug.
+#
+#   Default:
+#
+#   .. lookup-yaml:: defaults/main.yml
+#
+#      dotfiles_vim_plug_url
+dotfiles_vim_plug_url: https://github.com/junegunn/vim-plug/releases/download/0.9.1/plug.vim
+
+### dotfiles_vim_plug_sha256_checksum
+#   SHA256 checksum of Vim Plug file.
+#
+#   Default:
+#
+#   .. lookup-yaml:: defaults/main.yml
+#
+#      dotfiles_vim_plug_sha256_checksum
+dotfiles_vim_plug_sha256_checksum: 42324f63f6b7e2239b2665340e29b12caffc9a1688b467b276f0819b77dfd41e
+
+### dotfiles_repositories
+#   List of repositories to setup.
+#
+#   Default:
+#
+#   .. lookup-yaml:: defaults/main.yml
+#
+#      dotfiles_repositories
+dotfiles_repositories:
+  - name: docker
+    repository:
+      - 'deb [arch=amd64] https://apt.dockerproject.org/repo debian-stretch main'
+    pubkey: '58118E89F3A912897C070ADBF76221572C52609D'
+  - name: ansible
+    repository:
+      - deb http://ppa.launchpad.net/ansible/ansible/ubuntu trusty main
+      - deb-src http://ppa.launchpad.net/ansible/ansible/ubuntu trusty main
+    pubkey: '6125E2A8C77F2818FB7BD15B93C4A3FD7BB9C367'
+  - name: nodesource
+    repository:
+      - deb https://deb.nodesource.com/node_8.x stretch main
+      - deb-src https://deb.nodesource.com/node_8.x stretch main
+    pubkey: '9FD3B784BC1C6FC31A8A0A1C1655A0AB68576280'
+
+### dotfiles_aliases
+#   Shell aliases.
+#
+#   Default:
+#
+#   .. lookup-yaml:: defaults/main.yml
+#
+#      dotfiles_aliases
+dotfiles_aliases:
+  sshk: ssh-add ~/.ssh/id_rsa
+  l: less
+  s: ssh
+  v: vim
+  k: kubectl

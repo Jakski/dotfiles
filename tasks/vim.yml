@@ -20,9 +20,9 @@
     - '{{ ansible_user_dir }}/.vim/autoload'
 - name: Install vim-plug
   get_url:
-    url: '{{ vim_plug_url }}'
+    url: '{{ dotfiles_vim_plug_url }}'
     dest: '{{ ansible_user_dir }}/.vim/autoload/plug.vim'
-    sha256sum: '{{ vim_plug_sha256_checksum }}'
+    sha256sum: '{{ dotfiles_vim_plug_sha256_checksum }}'
 - name: Setup ftplugin customisations
   copy:
     src: '{{ item }}'
@@ -32,6 +32,6 @@
     mode: 0644
   loop: '{{ query("fileglob", "files/ftplugin/*") }}'
 - name: Install plugins
-  shell: vim -c 'PlugInstall --sync' -c 'qa'
+  shell: vim -c 'PlugInstall' -c 'qa'
   args:
     creates: '{{ ansible_user_dir }}/.vim/plugged/vim-jakskitags'
