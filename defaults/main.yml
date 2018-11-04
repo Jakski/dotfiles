@@ -59,8 +59,9 @@ dotfiles_paths:
   - ~/.local/bin
   - ~/go/bin
   - /usr/local/go/bin
-  - /usr/bin
   - /bin
+  - /usr/bin
+  - /usr/local/bin
   - /usr/local/games
   - /usr/games
 
