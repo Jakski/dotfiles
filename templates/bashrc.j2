@@ -1,9 +1,9 @@
 shi() {
-    # Use rxvt for systems without tmux terminfo
-    old_term=$TERM
-    TERM=rxvt
-    ssh $@
-    TERM=$old_term
+	# Use rxvt for systems without tmux terminfo
+	old_term=$TERM
+	TERM=rxvt
+	ssh $@
+	TERM=$old_term
 }
 
 tmosh() {
@@ -11,11 +11,11 @@ tmosh() {
 }
 
 venv-activate() {
-    . ~/.venvs/${1}/bin/activate
+	. ~/.venvs/${1}/bin/activate
 }
 
 {% if dotfiles_aliases %}
-alias{% for alias, cmd in dotfiles_aliases.items() %} {{ alias }}="{{ cmd }}"{% endfor %}
+alias{% for alias, cmd in dotfiles_aliases.items() | sort %} {{ alias }}="{{ cmd }}"{% endfor %}
 
 {% endif %}
 export EDITOR=vim
