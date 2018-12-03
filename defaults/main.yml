@@ -40,7 +40,7 @@ dotfiles_packages:
   - python3-venv
   - strace
   - nmap
-  - docker-engine
+  - docker-ce
   # headers for Pyenv
   - libssl-dev
   - libsqlite3-dev
@@ -116,7 +116,7 @@ dotfiles_vim_plug_sha256_checksum: 42324f63f6b7e2239b2665340e29b12caffc9a1688b46
 dotfiles_repositories:
   - name: docker
     repository:
-      - 'deb [arch=amd64] https://apt.dockerproject.org/repo debian-stretch main'
+      - 'deb [arch=amd64] https://download.docker.com/linux/debian stretch stable'
     pubkey: '58118E89F3A912897C070ADBF76221572C52609D'
   - name: ansible
     repository:
