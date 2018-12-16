@@ -29,8 +29,11 @@ autocmd BufNewFile,BufRead *.conf.j2 :set filetype=conf
 
 inoremap <F5> <C-R>=strftime("%Y-%m-%d %H:%M")<CR>
 nnoremap <Leader>n :NERDTreeToggle<CR>
+nnoremap <Leader><F2> :nohlsearch<CR>
 
 let g:NERDTreeChDirMode = 2
 let g:NERDTreeShowHidden = 1
-let g:vimwiki_list = [{'path': '~/vimwiki/default'}]
+let g:vimwiki_list = [
+	\ {'path': '~/vimwiki/default'},
+	\ {'path': '~/vimwiki/local'}]
 let g:indentLine_char = '¦'
