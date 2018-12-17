@@ -117,7 +117,7 @@ dotfiles_repositories:
   - name: docker
     repository:
       - 'deb [arch=amd64] https://download.docker.com/linux/debian stretch stable'
-    pubkey: '58118E89F3A912897C070ADBF76221572C52609D'
+    pubkey: '7EA0A9C3F273FCD8'
   - name: ansible
     repository:
       - deb http://ppa.launchpad.net/ansible/ansible/ubuntu trusty main
@@ -143,3 +143,14 @@ dotfiles_aliases:
   s: ssh
   v: vim
   k: kubectl
+  la: ls -alrth
+
+### dotfiles_editor
+#   EDITOR variable.
+#
+#   Default:
+#
+#   .. lookup-yaml:: defaults/main.yml
+#
+#      dotfiles_editor
+dotfiles_editor: vim
