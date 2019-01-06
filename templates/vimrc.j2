@@ -5,7 +5,9 @@ Plug 'vim-scripts/The-NERD-Commenter'
 Plug 'vim-scripts/The-NERD-tree'
 Plug 'vim-scripts/vimwiki'
 Plug 'Jakski/vim-jakskitags'
+Plug 'Jakski/vim-yaml'
 Plug 'Yggdroot/indentLine'
+Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
 call plug#end()
 
 syntax on
@@ -18,7 +20,7 @@ set mouse=
 set ruler
 set nomodeline
 set laststatus=0
-set statusline+=%{fugitive#statusline()}%=line:%l/%L\ col:%c
+set statusline=%{fugitive#statusline()}%=line:%l/%L\ col:%c
 set background=dark
 set list
 set listchars=tab:\¦\ 

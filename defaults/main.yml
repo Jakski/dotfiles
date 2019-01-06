@@ -93,7 +93,7 @@ dotfiles_golang_sha256_checksum: b3fcf280ff86558e0559e185b601c9eade0fd24c900b4c6
 #   .. lookup-yaml:: defaults/main.yml
 #
 #      dotfiles_vim_plug_url
-dotfiles_vim_plug_url: https://github.com/junegunn/vim-plug/releases/download/0.9.1/plug.vim
+dotfiles_vim_plug_url: https://raw.githubusercontent.com/junegunn/vim-plug/0.10.0/plug.vim
 
 ### dotfiles_vim_plug_sha256_checksum
 #   SHA256 checksum of Vim Plug file.
@@ -103,7 +103,7 @@ dotfiles_vim_plug_url: https://github.com/junegunn/vim-plug/releases/download/0.
 #   .. lookup-yaml:: defaults/main.yml
 #
 #      dotfiles_vim_plug_sha256_checksum
-dotfiles_vim_plug_sha256_checksum: 42324f63f6b7e2239b2665340e29b12caffc9a1688b467b276f0819b77dfd41e
+dotfiles_vim_plug_sha256_checksum: 01a138fc0ed99ef2678ba004613acbf8b0c51a85a8d2a1b658ef87af722e98e1
 
 ### dotfiles_repositories
 #   List of repositories to setup.
