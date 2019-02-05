@@ -1,16 +1,44 @@
+{% macro plugin_props(props) -%}
+{% if props != None and (props|length) > 0 %}
+, {
+{% for k, v in props.items() %}
+	\ '{{ k }}': '{{ v }}',
+{% endfor %}
+	\}
+{%- endif %}
+{%- endmacro %}
 call plug#begin('~/.vim/plugged')
-Plug 'tpope/vim-fugitive'
-Plug 'vim-scripts/genutils'
-Plug 'vim-scripts/The-NERD-Commenter'
-Plug 'vim-scripts/The-NERD-tree'
-Plug 'vim-scripts/vimwiki'
-Plug 'Jakski/vim-jakskitags'
-Plug 'Jakski/vim-yaml'
-Plug 'Yggdroot/indentLine'
-Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
+{% for name, props in dotfiles_vim_plugins.items() %}
+Plug '{{ name }}'{{ plugin_props(props) }}
+{% endfor %}
 call plug#end()
 
+function! MyTabLine()
+	let s = ''
+	for i in range(tabpagenr('$'))
+		" select the highlighting
+		if i + 1 == tabpagenr()
+			let s .= '%#TabLineSel#'
+		else
+			let s .= '%#TabLine#'
+		endif
+		let s .= ' ' . (i + 1) . ' '
+		let tabname = gettabvar(i + 1, 'tabname')
+		if len(tabname) > 0
+			let s .= tabname . ' '
+		endif
+	endfor
+	" after the last tab fill with TabLineFill and reset tab page nr
+	let s .= '%#TabLineFill#%T'
+	" right-align the label to close the current tab page
+	if tabpagenr('$') > 1
+		let s .= '%=%#TabLine#%999XX'
+	endif
+	return s
+endfunction
+
 syntax on
+set tabline=%!MyTabLine()
 set number
 set noswapfile
 set relativenumber
@@ -28,14 +56,13 @@ set listchars=tab:\¦\
 autocmd BufNewFile,BufRead *.dockerfile :set filetype=dockerfile
 autocmd BufNewFile,BufRead *.html.j2 :set filetype=htmldjango
 autocmd BufNewFile,BufRead *.conf.j2 :set filetype=conf
+autocmd BufNewFile,BufRead *.pp :set filetype=ruby
 
 inoremap <F5> <C-R>=strftime("%Y-%m-%d %H:%M")<CR>
-nnoremap <Leader>n :NERDTreeToggle<CR>
 nnoremap <Leader><F2> :nohlsearch<CR>
 
-let g:NERDTreeChDirMode = 2
-let g:NERDTreeShowHidden = 1
 let g:vimwiki_list = [
 	\ {'path': '~/vimwiki/default'},
 	\ {'path': '~/vimwiki/local'}]
 let g:indentLine_char = '¦'
+let g:semshi#error_sign_delay = 15

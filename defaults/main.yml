@@ -154,3 +154,23 @@ dotfiles_aliases:
 #
 #      dotfiles_editor
 dotfiles_editor: vim
+
+### dotfiles_vim_plugins
+#   Map of Vim plugins and their options in vim-plug format.
+#
+#   Default:
+#
+#   .. lookup-yaml:: defaults/main.yml
+#
+#      dotfiles_vim_plugins
+dotfiles_vim_plugins:
+  tpope/vim-fugitive:
+  vim-scripts/genutils:
+  vim-scripts/The-NERD-Commenter:
+  vim-scripts/vimwiki:
+  Jakski/vim-jakskitags:
+  Yggdroot/indentLine:
+  Jakski/vim-yaml:
+    do: ':UpdateRemotePlugins'
+  numirias/semshi:
+    do: ':UpdateRemotePlugins'
