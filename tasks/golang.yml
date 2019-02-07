@@ -3,6 +3,7 @@
   stat:
     path: /usr/local/go
   register: go_dir
+
 - name: Install Go
   block:
     - name: Download Go

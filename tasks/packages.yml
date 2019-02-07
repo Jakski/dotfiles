@@ -6,12 +6,14 @@
     state: present
   become: true
   loop: '{{ dotfiles_repositories }}'
+
 - name: Add APT repositories
   apt_repository:
     filename: '{{ item.0.name }}'
     repo: '{{ item.1 }}'
   become: true
   loop: '{{ dotfiles_repositories|subelements("repository") }}'
+
 - name: Install system packages
   apt:
     name: '{{ dotfiles_packages }}'

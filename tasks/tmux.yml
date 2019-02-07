@@ -6,6 +6,7 @@
     owner: '{{ ansible_user_uid }}'
     group: '{{ ansible_user_gid }}'
     mode: 0644
+
 - name: Create catalog for tmux files
   file:
     path: '{{ ansible_user_dir }}/.tmux'
@@ -13,6 +14,7 @@
     owner: '{{ ansible_user_uid }}'
     group: '{{ ansible_user_gid }}'
     mode: 0755
+
 - name: Insert tmux files
   copy:
     src: '{{ item }}'
@@ -20,7 +22,8 @@
     owner: '{{ ansible_user_uid }}'
     group: '{{ ansible_user_gid }}'
     mode: 0755
-  loop: '{{ query("fileglob", "files/tmux/*.sh") }}'
+  loop: '{{ query("fileglob", "files/tmux/*") }}'
+
 - name: Link tmux scripts to user's PATH
   file:
     src: '{{ ansible_user_dir }}/.tmux/{{ item.split("/")[-1] }}'

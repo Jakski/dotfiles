@@ -60,6 +60,7 @@ autocmd BufNewFile,BufRead *.pp :set filetype=ruby
 
 inoremap <F5> <C-R>=strftime("%Y-%m-%d %H:%M")<CR>
 nnoremap <Leader><F2> :nohlsearch<CR>
+nnoremap <F3> :let t:tabname=input('Enter tabname: ')<CR>
 
 let g:vimwiki_list = [
 	\ {'path': '~/vimwiki/default'},

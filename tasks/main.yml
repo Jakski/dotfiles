@@ -5,12 +5,18 @@
     state: directory
     owner: '{{ ansible_user_uid }}'
     group: '{{ ansible_user_gid }}'
+
 - import_tasks: packages.yml
   become: true
+
 - import_tasks: tmux.yml
+
 - import_tasks: vim.yml
+
 - import_tasks: shell.yml
+
 - import_tasks: services.yml
   become: true
+
 - import_tasks: golang.yml
   become: true
