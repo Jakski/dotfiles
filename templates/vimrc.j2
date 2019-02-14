@@ -13,45 +13,23 @@ Plug '{{ name }}'{{ plugin_props(props) }}
 {% endfor %}
 call plug#end()
 
-function! MyTabLine()
-	let s = ''
-	for i in range(tabpagenr('$'))
-		" select the highlighting
-		if i + 1 == tabpagenr()
-			let s .= '%#TabLineSel#'
-		else
-			let s .= '%#TabLine#'
-		endif
-		let s .= ' ' . (i + 1) . ' '
-		let tabname = gettabvar(i + 1, 'tabname')
-		if len(tabname) > 0
-			let s .= tabname . ' '
-		endif
-	endfor
-	" after the last tab fill with TabLineFill and reset tab page nr
-	let s .= '%#TabLineFill#%T'
-	" right-align the label to close the current tab page
-	if tabpagenr('$') > 1
-		let s .= '%=%#TabLine#%999XX'
-	endif
-	return s
-endfunction
-
 syntax on
-set tabline=%!MyTabLine()
+set tabline=%!JakskiTabs_line()
 set number
 set noswapfile
 set relativenumber
 set autoindent
 set nofoldenable
+set nofixendofline
 set mouse=
 set ruler
 set nomodeline
-set laststatus=0
+set laststatus=2
 set statusline=%{fugitive#statusline()}%=line:%l/%L\ col:%c
 set background=dark
 set list
 set listchars=tab:\¦\ 
+set sessionoptions+=tabpages,globals
 
 autocmd BufNewFile,BufRead *.dockerfile :set filetype=dockerfile
 autocmd BufNewFile,BufRead *.html.j2 :set filetype=htmldjango
@@ -59,8 +37,10 @@ autocmd BufNewFile,BufRead *.conf.j2 :set filetype=conf
 autocmd BufNewFile,BufRead *.pp :set filetype=ruby
 
 inoremap <F5> <C-R>=strftime("%Y-%m-%d %H:%M")<CR>
-nnoremap <Leader><F2> :nohlsearch<CR>
-nnoremap <F3> :let t:tabname=input('Enter tabname: ')<CR>
+nnoremap <F2> :nohlsearch<CR>
+nnoremap <F3> :call JakskiTabs_set_name()<CR>
+xmap ga <Plug>(EasyAlign)
+nmap ga <Plug>(EasyAlign)
 
 let g:vimwiki_list = [
 	\ {'path': '~/vimwiki/default'},

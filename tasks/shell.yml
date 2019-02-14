@@ -1,6 +1,5 @@
 ---
 - name: Install Bash configuration
-  blockinfile:
-    path: '{{ ansible_user_dir }}/.bashrc'
-    insertafter: 'EOF'
-    block: '{{ lookup("template", "bashrc.j2") }}'
+  template:
+    dest: '{{ ansible_facts.user_dir }}/.bashrc'
+    src: bashrc.j2

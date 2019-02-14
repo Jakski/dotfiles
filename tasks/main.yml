@@ -1,22 +1,29 @@
 ---
 - name: Create directory for user executable files
   file:
-    dest: '{{ ansible_user_dir }}/bin'
+    dest: '{{ ansible_facts.user_dir }}/bin'
     state: directory
-    owner: '{{ ansible_user_uid }}'
-    group: '{{ ansible_user_gid }}'
+    owner: '{{ ansible_facts.user_uid }}'
+    group: '{{ ansible_facts.user_gid }}'
+  tags: [always]
 
 - import_tasks: packages.yml
   become: true
+  tags: [dotfiles_packages]
 
 - import_tasks: tmux.yml
+  tags: [dotfiles_tmux]
 
 - import_tasks: vim.yml
+  tags: [dotfiles_vim]
 
 - import_tasks: shell.yml
+  tags: [dotfiles_shell]
 
 - import_tasks: services.yml
   become: true
+  tags: [dotfiles_services]
 
 - import_tasks: golang.yml
   become: true
+  tags: [dotfiles_golang]

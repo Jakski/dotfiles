@@ -117,16 +117,11 @@ dotfiles_repositories:
   - name: docker
     repository:
       - 'deb [arch=amd64] https://download.docker.com/linux/debian stretch stable'
-    pubkey: '7EA0A9C3F273FCD8'
-  - name: ansible
-    repository:
-      - deb http://ppa.launchpad.net/ansible/ansible/ubuntu trusty main
-      - deb-src http://ppa.launchpad.net/ansible/ansible/ubuntu trusty main
-    pubkey: '6125E2A8C77F2818FB7BD15B93C4A3FD7BB9C367'
+    pubkey: 'DEE0F07B347CD8202105B20C23E7166788B63E1E'
   - name: nodesource
     repository:
-      - deb https://deb.nodesource.com/node_8.x stretch main
-      - deb-src https://deb.nodesource.com/node_8.x stretch main
+      - deb https://deb.nodesource.com/node_10.x stretch main
+      - deb-src https://deb.nodesource.com/node_10.x stretch main
     pubkey: '9FD3B784BC1C6FC31A8A0A1C1655A0AB68576280'
 
 ### dotfiles_aliases
@@ -168,9 +163,9 @@ dotfiles_vim_plugins:
   vim-scripts/genutils:
   vim-scripts/The-NERD-Commenter:
   vim-scripts/vimwiki:
-  Jakski/vim-jakskitags:
+  jakski/vim-jakskitags:
+  jakski/vim-jakskitabs:
+  hashivim/vim-terraform:
   Yggdroot/indentLine:
-  Jakski/vim-yaml:
-    do: ':UpdateRemotePlugins'
   numirias/semshi:
     do: ':UpdateRemotePlugins'
