@@ -165,7 +165,10 @@ dotfiles_vim_plugins:
   vim-scripts/vimwiki:
   jakski/vim-jakskitags:
   jakski/vim-jakskitabs:
+  jakski/vim-yaml:
+    do: ':UpdateRemotePlugins'
   hashivim/vim-terraform:
   Yggdroot/indentLine:
   numirias/semshi:
     do: ':UpdateRemotePlugins'
+  junegunn/vim-easy-align:
