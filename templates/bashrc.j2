@@ -34,6 +34,8 @@ if [ "$color_prompt" = yes ]; then
 else
 	PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\n\$ '
 fi
+code="$((RANDOM % 10))$((RANDOM % 10))$((RANDOM % 10))$((RANDOM % 10))"
+PS1="[${code}]${PS1}"
 unset color_prompt force_color_prompt
 
 case "$TERM" in
