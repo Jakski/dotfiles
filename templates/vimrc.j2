@@ -31,10 +31,11 @@ set list
 set listchars=tab:\¦\ 
 set sessionoptions+=tabpages,globals
 
-autocmd BufNewFile,BufRead *.dockerfile :set filetype=dockerfile
-autocmd BufNewFile,BufRead *.html.j2 :set filetype=htmldjango
-autocmd BufNewFile,BufRead *.conf.j2 :set filetype=conf
-autocmd BufNewFile,BufRead *.pp :set filetype=ruby
+autocmd BufNewFile,BufRead *.dockerfile :setlocal filetype=dockerfile
+autocmd BufNewFile,BufRead *.html.j2 :setlocal filetype=htmldjango
+autocmd BufNewFile,BufRead *.conf.j2 :setlocal filetype=conf
+autocmd BufNewFile,BufRead *.pp :setlocal filetype=ruby
+autocmd BufNewFile,BufRead meson.build :setlocal filetype=python
 
 inoremap <F5> <C-R>=strftime("%Y-%m-%d %H:%M")<CR>
 nnoremap <F2> :nohlsearch<CR>
@@ -47,3 +48,5 @@ let g:vimwiki_list = [
 	\ {'path': '~/vimwiki/local'}]
 let g:indentLine_char = '¦'
 let g:semshi#error_sign_delay = 15
+let g:netrw_banner = 0
+let g:ruby_path = []
