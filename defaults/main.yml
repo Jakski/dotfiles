@@ -1,4 +1,16 @@
 ---
+### dotfiles_bootstrap_packages
+#   APT packages required to control repositories
+#
+#   Default:
+#
+#   .. lookup-yaml:: defaults/main.yml
+#
+#      dotfiles_bootstrap_packages
+dotfiles_bootstrap_packages:
+  - dirmngr
+  - apt-transport-https
+
 ### dotfiles_packages
 #   APT packages to install.
 #
@@ -23,8 +35,6 @@ dotfiles_packages:
   - lynx
   - zip
   - neovim
-  - dirmngr
-  - apt-transport-https
   - vinagre
   # media
   - gimp
@@ -117,7 +127,7 @@ dotfiles_repositories:
   - name: docker
     repository:
       - 'deb [arch=amd64] https://download.docker.com/linux/debian stretch stable'
-    pubkey: 'DEE0F07B347CD8202105B20C23E7166788B63E1E'
+    pubkey: '9DC858229FC7DD38854AE2D88D81803C0EBFCD88'
   - name: nodesource
     repository:
       - deb https://deb.nodesource.com/node_10.x stretch main
