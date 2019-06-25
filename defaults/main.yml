@@ -37,6 +37,7 @@ dotfiles_packages:
   - neovim
   - vinagre
   - keepassx
+  - firejail
   # media
   - gimp
   - vlc
