@@ -17,7 +17,6 @@
   loop:
     - '{{ ansible_facts.user_dir }}/.vim'
     - '{{ ansible_facts.user_dir }}/.vim/ftplugin'
-    - '{{ ansible_facts.user_dir }}/.vim/plugged'
     - '{{ ansible_facts.user_dir }}/.vim/autoload'
 
 - name: Install vim-plug
@@ -35,7 +34,19 @@
     mode: 0644
   loop: '{{ query("fileglob", "files/ftplugin/*") }}'
 
+- name: Link neovim configuration directory
+  file:
+    state: link
+    path: '{{ ansible_facts.user_dir }}/.config/nvim'
+    src: '{{ ansible_facts.user_dir }}/.vim'
+
+- name: Link neovim configuration file
+  file:
+    state: link
+    path: '{{ ansible_facts.user_dir }}/.vim/init.vim'
+    src: '{{ ansible_facts.user_dir }}/.vimrc'
+
 - name: Install plugins
   shell: vim -c 'PlugInstall' -c 'qa'
   args:
-    creates: '{{ ansible_facts.user_dir }}/.vim/plugged/vim-jakskitags'
+    creates: '{{ ansible_facts.user_dir }}/.vim/plugged'

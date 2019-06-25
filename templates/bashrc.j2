@@ -82,4 +82,4 @@ alias{% for alias, cmd in dotfiles_aliases.items()|sort %} {{ alias }}="{{ cmd }
 
 {% endif %}
 export EDITOR="{{ dotfiles_editor }}"
-export PATH={{ dotfiles_paths | join(":") }}
+export PATH={{ dotfiles_paths | join(":") }}:$PATH

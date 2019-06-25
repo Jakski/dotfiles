@@ -8,7 +8,7 @@
 {%- endif %}
 {%- endmacro %}
 call plug#begin('~/.vim/plugged')
-{% for name, props in dotfiles_vim_plugins.items() %}
+{% for name, props in (dotfiles_vim_plugins|dictsort) %}
 Plug '{{ name }}'{{ plugin_props(props) }}
 {% endfor %}
 call plug#end()

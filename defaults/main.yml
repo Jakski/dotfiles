@@ -69,11 +69,6 @@ dotfiles_paths:
   - ~/.local/bin
   - ~/go/bin
   - /usr/local/go/bin
-  - /bin
-  - /usr/bin
-  - /usr/local/bin
-  - /usr/local/games
-  - /usr/games
 
 ### dotfiles_golang_url
 #   URL of Go archive.

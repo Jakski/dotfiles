@@ -27,3 +27,9 @@
     state: present
     update_cache: true
   become: true
+
+- name: Link vim version
+  alternatives:
+    name: vim
+    path: /usr/bin/nvim
+    priority: 30
