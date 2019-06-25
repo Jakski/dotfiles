@@ -36,6 +36,7 @@ dotfiles_packages:
   - zip
   - neovim
   - vinagre
+  - keepassx
   # media
   - gimp
   - vlc
