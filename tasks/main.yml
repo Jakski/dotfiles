@@ -1,11 +1,20 @@
 ---
-- name: Create directory for user executable files
+- name: Create directory scheme
   file:
-    dest: '{{ ansible_facts.user_dir }}/bin'
+    path: '{{ ansible_facts.user_dir }}/{{ item }}'
     state: directory
     owner: '{{ ansible_facts.user_uid }}'
     group: '{{ ansible_facts.user_gid }}'
+  loop:
+    - bin
+    - dev
   tags: [always]
+
+- name: Set permissions on home directory
+  file:
+    path: '{{ ansible_facts.user_dir }}'
+    state: directory
+    mode: 0700
 
 - import_tasks: packages.yml
   become: true
@@ -27,3 +36,6 @@
 - import_tasks: golang.yml
   become: true
   tags: [dotfiles_golang]
+
+- import_tasks: utilities.yml
+  tags: [dotfiles_utilities]

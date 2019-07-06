@@ -1,0 +1,26 @@
+---
+- name: Clone repository with scripts
+  git:
+    repo: https://github.com/Jakski/scripts.git
+    dest: "{{ ansible_facts.user_dir }}/dev/scripts"
+
+- name: Link global scripts
+  become: true
+  file:
+    path: "/usr/local/bin/{{ item }}"
+    src: "{{ ansible_facts.user_dir }}/dev/scripts/{{ item }}"
+    state: link
+  loop:
+    - cpuopt.sh
+    - vault.sh
+
+- name: Disable sudo caching
+  become: true
+  copy:
+    dest: /etc/sudoers.d/timeout
+    content: >
+      Defaults timestamp_timeout=0
+    owner: root
+    group: root
+    mode: 0440
+    validate: /usr/sbin/visudo -cf %s

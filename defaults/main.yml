@@ -38,6 +38,7 @@ dotfiles_packages:
   - vinagre
   - keepassx
   - firejail
+  - bc
   # media
   - gimp
   - vlc
@@ -68,6 +69,7 @@ dotfiles_packages:
 #      dotfiles_paths
 dotfiles_paths:
   - ~/bin
+  - ~/dev/scripts
   - ~/.local/bin
   - ~/go/bin
   - /usr/local/go/bin
