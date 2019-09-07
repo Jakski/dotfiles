@@ -1,9 +1,29 @@
-#!/bin/sh
+#!/usr/bin/env bash
+
+set -o errexit
+set -o nounset
+set -o pipefail
+
+set -x
 
 NAME=media
 
-tmux has-session -t $NAME
-if [ $? != 0 ]; then
-    tmux new-session -s $NAME -n browser -c ~/ -d firefox
-    tmux new-window -n irc -t $NAME irssi
-fi
+find_window() {
+  local window=$1
+  tmux list-windows -t "$NAME" -F '#{window_name}' \
+    | grep -q "^${window}\$"
+}
+
+main() {
+  tmux has-session -t "$NAME" || {
+    tmux new-session -s "$NAME" -c ~/
+  }
+  find_window browser || {
+    tmux new-window -n browser -t "$NAME" firefox
+  }
+  [ -f ~/.irssi/config ] && find_window irc || {
+    tmux new-window -n irc -t "$NAME" irssi
+  }
+}
+
+main "$@"
