@@ -16,7 +16,10 @@ find_window() {
 
 main() {
   tmux has-session -t "$NAME" || {
-    tmux new-session -s "$NAME" -c ~/
+    tmux new-session -s "$NAME" -c ~/ -n paswd -d bash
+  }
+  find_window passwd || {
+    tmux new-window -n passwd -t "$NAME" bash
   }
   find_window browser || {
     tmux new-window -n browser -t "$NAME" firefox
