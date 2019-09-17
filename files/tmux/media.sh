@@ -16,7 +16,7 @@ find_window() {
 
 main() {
   tmux has-session -t "$NAME" || {
-    tmux new-session -s "$NAME" -c ~/ -n paswd -d bash
+    tmux new-session -s "$NAME" -c ~/ -n passwd -d bash
   }
   find_window passwd || {
     tmux new-window -n passwd -t "$NAME" bash
