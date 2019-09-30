@@ -82,7 +82,7 @@ dotfiles_paths:
 #   .. lookup-yaml:: defaults/main.yml
 #
 #      dotfiles_golang_url
-dotfiles_golang_url: https://dl.google.com/go/go1.11.linux-amd64.tar.gz
+dotfiles_golang_url: https://dl.google.com/go/go1.13.1.linux-amd64.tar.gz
 
 ### dotfiles_golang_sha256_checksum
 #   SHA256 checksum of Go archive.
@@ -92,7 +92,7 @@ dotfiles_golang_url: https://dl.google.com/go/go1.11.linux-amd64.tar.gz
 #   .. lookup-yaml:: defaults/main.yml
 #
 #      dotfiles_golang_sha256_checksum
-dotfiles_golang_sha256_checksum: b3fcf280ff86558e0559e185b601c9eade0fd24c900b4c63cd14d1d38613e499
+dotfiles_golang_sha256_checksum: 94f874037b82ea5353f4061e543681a0e79657f787437974214629af8407d124
 
 ### dotfiles_vim_plug_url
 #   URL for Vim Plug.
