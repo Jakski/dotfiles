@@ -1,1 +1,1 @@
-set ts=3 sw=3 sts=3 tw=80
+setlocal tabstop=3 shiftwidth=3 softtabstop=3 textwidth=80

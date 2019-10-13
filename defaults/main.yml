@@ -179,3 +179,4 @@ dotfiles_vim_plugins:
   numirias/semshi:
     do: ':UpdateRemotePlugins'
   junegunn/vim-easy-align:
+  editorconfig/editorconfig-vim:
