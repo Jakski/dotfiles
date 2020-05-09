@@ -39,6 +39,11 @@ dotfiles_packages:
   - keepassx
   - firejail
   - bc
+  - sudo
+  - silversearcher-ag
+  - tree
+  - libpcap2-bin
+  - wget
   # media
   - gimp
   - vlc
@@ -49,15 +54,26 @@ dotfiles_packages:
   - lsyncd
   - exuberant-ctags
   - git
+  - subversion
   - make
   - python3-venv
+  - python3
+  - python3-pip
+  - python3-dev
+  - python3-venv
+  - python3-neovim
+  - python
+  - python-dev
+  - python-pip
   - strace
   - nmap
   - docker-ce
-  # headers for Pyenv
+  - gcc
   - libssl-dev
   - libsqlite3-dev
   - libbz2-dev
+  - libffi-dev
+  - tcpdump
 
 ### dotfiles_paths
 #   Elements of PATH environment variable.
@@ -172,8 +188,10 @@ dotfiles_vim_plugins:
   vim-scripts/genutils:
   vim-scripts/The-NERD-Commenter:
   vim-scripts/vimwiki:
-  jakski/vim-jakskitags:
   jakski/vim-jakskitabs:
+  xolox/vim-misc:
+  xolox/vim-easytags:
+  majutsushi/tagbar:
   hashivim/vim-terraform:
   Yggdroot/indentLine:
   numirias/semshi:

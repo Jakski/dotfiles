@@ -30,18 +30,22 @@ set background=dark
 set list
 set listchars=tab:\¦\ 
 set sessionoptions+=tabpages,globals
+set grepprg=ag\ --vimgrep\ $*
+set grepformat=%f:%l:%c:%m
 
 autocmd BufNewFile,BufRead *.dockerfile :setlocal filetype=dockerfile
 autocmd BufNewFile,BufRead *.html.j2 :setlocal filetype=htmldjango
 autocmd BufNewFile,BufRead *.conf.j2 :setlocal filetype=conf
 autocmd BufNewFile,BufRead *.pp :setlocal filetype=ruby
 autocmd BufNewFile,BufRead meson.build :setlocal filetype=python
+autocmd BufNewFile,BufRead *.bt :setlocal filetype=bpftrace
 
 inoremap <F5> <C-R>=strftime("%Y-%m-%d %H:%M")<CR>
 nnoremap <F2> :nohlsearch<CR>
 nnoremap <F3> :call JakskiTabs_set_name()<CR>
 xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
+nmap <F8> :TagbarToggle<CR>
 
 let g:vimwiki_list = [
 	\ {'path': '~/vimwiki/default'},
@@ -50,3 +54,5 @@ let g:indentLine_char = '¦'
 let g:semshi#error_sign_delay = 15
 let g:netrw_banner = 0
 let g:ruby_path = []
+let g:easytags_auto_update = 0
+let g:easytags_auto_highlight = 0
