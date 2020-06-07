@@ -74,6 +74,7 @@ dotfiles_packages:
   - libbz2-dev
   - libffi-dev
   - tcpdump
+  - build-essential
 
 ### dotfiles_paths
 #   Elements of PATH environment variable.
