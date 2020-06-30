@@ -77,6 +77,10 @@ venv-activate() {
 	. ~/.venvs/${1}/bin/activate
 }
 
+yaml2json() {
+	python3 -c 'from ruamel import yaml; import json, sys; json.dump(yaml.safe_load(sys.stdin), sys.stdout)'
+}
+
 {% if dotfiles_aliases %}
 alias{% for alias, cmd in dotfiles_aliases.items()|sort %} {{ alias }}="{{ cmd }}"{% endfor %}
 
