@@ -36,13 +36,12 @@ dotfiles_packages:
   - zip
   - neovim
   - vinagre
-  - keepassx
+  - pass
   - firejail
   - bc
   - sudo
   - silversearcher-ag
   - tree
-  - libpcap2-bin
   - wget
   # media
   - gimp
@@ -52,7 +51,7 @@ dotfiles_packages:
   - irssi
   # development
   - lsyncd
-  - exuberant-ctags
+  - universal-ctags
   - git
   - subversion
   - make
@@ -146,8 +145,8 @@ dotfiles_repositories:
     pubkey: '9DC858229FC7DD38854AE2D88D81803C0EBFCD88'
   - name: nodesource
     repository:
-      - 'deb https://deb.nodesource.com/node_10.x {{ ansible_facts.distribution_release }} main'
-      - 'deb-src https://deb.nodesource.com/node_10.x {{ ansible_facts.distribution_release }} main'
+      - 'deb https://deb.nodesource.com/node_12.x {{ ansible_facts.distribution_release }} main'
+      - 'deb-src https://deb.nodesource.com/node_12.x {{ ansible_facts.distribution_release }} main'
     pubkey: '9FD3B784BC1C6FC31A8A0A1C1655A0AB68576280'
 
 ### dotfiles_aliases
@@ -185,17 +184,18 @@ dotfiles_editor: vim
 #
 #      dotfiles_vim_plugins
 dotfiles_vim_plugins:
-  tpope/vim-fugitive:
-  vim-scripts/genutils:
-  vim-scripts/The-NERD-Commenter:
-  vim-scripts/vimwiki:
-  jakski/vim-jakskitabs:
-  xolox/vim-misc:
-  xolox/vim-easytags:
-  majutsushi/tagbar:
-  hashivim/vim-terraform:
-  Yggdroot/indentLine:
+  tpope/vim-fugitive: ~
+  vim-scripts/genutils: ~
+  vim-scripts/The-NERD-Commenter: ~
+  vim-scripts/vimwiki: ~
+  xolox/vim-misc: ~
+  jakski/vim-jakskitabs: ~
+  jakski/vim-easytags: ~
+  majutsushi/tagbar: ~
+  hashivim/vim-terraform: ~
+  Yggdroot/indentLine: ~
   numirias/semshi:
     do: ':UpdateRemotePlugins'
-  junegunn/vim-easy-align:
-  editorconfig/editorconfig-vim:
+  junegunn/vim-easy-align: ~
+  editorconfig/editorconfig-vim: ~
+  altercation/vim-colors-solarized: ~

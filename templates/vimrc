@@ -7,13 +7,16 @@
 	\}
 {%- endif %}
 {%- endmacro %}
-call plug#begin('~/.vim/plugged')
+call plug#begin('~/.config/nvim/plugged')
 {% for name, props in (dotfiles_vim_plugins|dictsort) %}
 Plug '{{ name }}'{{ plugin_props(props) }}
 {% endfor %}
 call plug#end()
 
-syntax on
+syntax enable
+set background=dark
+colorscheme solarized
+
 set tabline=%!JakskiTabs_line()
 set number
 set noswapfile
@@ -26,7 +29,6 @@ set ruler
 set nomodeline
 set laststatus=2
 set statusline=%{fugitive#statusline()}%=line:%l/%L\ col:%c
-set background=dark
 set list
 set listchars=tab:\¦\ 
 set sessionoptions+=tabpages,globals
@@ -39,13 +41,20 @@ autocmd BufNewFile,BufRead *.conf.j2 :setlocal filetype=conf
 autocmd BufNewFile,BufRead *.pp :setlocal filetype=ruby
 autocmd BufNewFile,BufRead meson.build :setlocal filetype=python
 autocmd BufNewFile,BufRead *.bt :setlocal filetype=bpftrace
+autocmd InsertLeave,WinEnter * set cursorline
+autocmd InsertEnter,WinLeave * set nocursorline
 
-inoremap <F5> <C-R>=strftime("%Y-%m-%d %H:%M")<CR>
-nnoremap <F2> :nohlsearch<CR>
+nnoremap <F2> :nohlsearch<cr>:diffupdate<cr>:syntax sync fromstart<cr><c-l>
 nnoremap <F3> :call JakskiTabs_set_name()<CR>
+nnoremap <F4> :UpdateTags -R .<CR>
+inoremap <F5> <C-R>=strftime("%Y-%m-%d %H:%M")<CR>
+nmap <F6> :TagbarToggle<CR>
 xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
-nmap <F8> :TagbarToggle<CR>
+noremap <C-h> <C-W>h
+noremap <C-j> <C-W>j
+noremap <C-k> <C-W>k
+noremap <C-l> <C-W>l
 
 let g:vimwiki_list = [
 	\ {'path': '~/vimwiki/default'},
@@ -54,5 +63,8 @@ let g:indentLine_char = '¦'
 let g:semshi#error_sign_delay = 15
 let g:netrw_banner = 0
 let g:ruby_path = []
+" Version compatible with Debian package
+let g:easytags_ctags_required_version = '0.0'
+let g:easytags_cmd = '/usr/bin/ctags-universal'
 let g:easytags_auto_update = 0
 let g:easytags_auto_highlight = 0

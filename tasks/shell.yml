@@ -2,4 +2,17 @@
 - name: Install Bash configuration
   template:
     dest: '{{ ansible_facts.user_dir }}/.bashrc'
-    src: bashrc.j2
+    src: bashrc
+
+- name: Create Alacritty configuration directory
+  file:
+    path: "{{ ansible_facts.user_dir }}/{{ item }}"
+    state: directory
+  loop:
+    - .config
+    - .config/alacritty
+
+- name: Create Alacritty configuration
+  copy:
+    src: alacritty.yml
+    dest: "{{ ansible_facts.user_dir }}/.config/alacritty/alacritty.yml"
